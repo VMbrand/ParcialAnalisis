@@ -1,0 +1,40 @@
+@startuml
+
+class Usuario {
+    + nombre_de_usuario : string
+    + contraseña : string
+}
+
+class Producto {
+    + nombre : string
+    + precio : float
+}
+
+class CarritoDeCompras {
+    + agregarProducto(producto: Producto)
+    + eliminarProducto(producto: Producto)
+}
+
+class Inventario {
+    + agregarProducto(producto: Producto)
+    + modificarCantidad(producto: Producto, cantidad: int)
+}
+
+class Cliente {
+    + nombre : string
+    + dirección : string
+}
+
+class Administrador {
+    + verListaClientes()
+    + eliminarCliente(cliente: Cliente)
+}
+
+Usuario -- CarritoDeCompras
+Usuario "1" -- "n" Producto : Agrega
+Producto -- CarritoDeCompras : Contiene
+
+Usuario <|-- Cliente
+Usuario <|-- Administrador
+
+@enduml
